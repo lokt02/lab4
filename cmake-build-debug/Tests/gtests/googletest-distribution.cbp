@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="googletest-distribution"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="msvc8"/>
+		<Option virtualFolders="CMake Files\;CMake Files\Tests\;CMake Files\Tests\gtests\;CMake Files\Tests\gtests\googlemock\;CMake Files\Tests\gtests\googlemock\cmake\;CMake Files\Tests\gtests\googletest\;CMake Files\Tests\gtests\googletest\cmake\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/CProj/lab4/cmake-build-debug/Tests/gtests"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gmock_main">
+				<Option output="D:/CProj/lab4/cmake-build-debug/lib/gmock_maind.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CProj/lab4/cmake-build-debug/Tests/gtests/googlemock"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googlemock/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googlemock"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 gmock_main"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gmock_main/fast">
+				<Option output="D:/CProj/lab4/cmake-build-debug/lib/gmock_maind.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CProj/lab4/cmake-build-debug/Tests/gtests/googlemock"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googlemock/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googlemock"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 gmock_main/fast"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gmock">
+				<Option output="D:/CProj/lab4/cmake-build-debug/lib/gmockd.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CProj/lab4/cmake-build-debug/Tests/gtests/googlemock"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googlemock/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googlemock"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 gmock"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gmock/fast">
+				<Option output="D:/CProj/lab4/cmake-build-debug/lib/gmockd.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CProj/lab4/cmake-build-debug/Tests/gtests/googlemock"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googlemock/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googlemock"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 gmock/fast"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googlemock\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest">
+				<Option output="D:/CProj/lab4/cmake-build-debug/lib/gtestd.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CProj/lab4/cmake-build-debug/Tests/gtests/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 gtest"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest/fast">
+				<Option output="D:/CProj/lab4/cmake-build-debug/lib/gtestd.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CProj/lab4/cmake-build-debug/Tests/gtests/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 gtest/fast"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest_main">
+				<Option output="D:/CProj/lab4/cmake-build-debug/lib/gtest_maind.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CProj/lab4/cmake-build-debug/Tests/gtests/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 gtest_main"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest_main/fast">
+				<Option output="D:/CProj/lab4/cmake-build-debug/lib/gtest_maind.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CProj/lab4/cmake-build-debug/Tests/gtests/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest/include"/>
+					<Add directory="D:/CProj/lab4/Tests/gtests/googletest"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 gtest_main/fast"/>
+					<CompileFile command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\CProj\lab4\cmake-build-debug\Tests\gtests\googletest\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googlemock/src/gmock-all.cc">
+			<Option target="gmock_main"/>
+			<Option target="gmock"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googlemock/src/gmock_main.cc">
+			<Option target="gmock_main"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googletest/src/gtest-all.cc">
+			<Option target="gmock_main"/>
+			<Option target="gmock"/>
+			<Option target="gtest"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googletest/src/gtest_main.cc">
+			<Option target="gtest_main"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Tests\"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Tests\gtests\"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googlemock/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Tests\gtests\googlemock\"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googlemock/cmake/gmock.pc.in">
+			<Option virtualFolder="CMake Files\Tests\gtests\googlemock\cmake\"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googlemock/cmake/gmock_main.pc.in">
+			<Option virtualFolder="CMake Files\Tests\gtests\googlemock\cmake\"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googletest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Tests\gtests\googletest\"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googletest/cmake/Config.cmake.in">
+			<Option virtualFolder="CMake Files\Tests\gtests\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googletest/cmake/gtest.pc.in">
+			<Option virtualFolder="CMake Files\Tests\gtests\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googletest/cmake/gtest_main.pc.in">
+			<Option virtualFolder="CMake Files\Tests\gtests\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/gtests/googletest/cmake/internal_utils.cmake">
+			<Option virtualFolder="CMake Files\Tests\gtests\googletest\cmake\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
