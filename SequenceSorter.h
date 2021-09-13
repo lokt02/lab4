@@ -13,18 +13,14 @@
 template<class T>
 class SequenceSorter{
 public:
-    template <template<typename> class ChildClass>
-    static ChildClass<T> BubbleSort(ChildClass<T> sequence, std::function<bool(T, T)> const & comparer){
-        if constexpr (static_cast<Sequence<T>*>(&sequence) == nullptr){
-            throw std::runtime_error("Wrong type");
-        }
+    static Sequence<T>* BubbleSort(Sequence<T>* sequence, std::function<bool(T, T)> const & comparer){
         int i, j;
         bool swapped;
-        for(i = 0; i < sequence.GetLength() - 1; i++){
+        for(i = 0; i < sequence->GetLength() - 1; i++){
             swapped = false;
-            for(j = 0; j < sequence.GetLength() - 1 - i; j++){
-                if(comparer(sequence[j], sequence[j+1])){
-                    swap(sequence[j], sequence[j+1]);
+            for(j = 0; j < sequence->GetLength() - 1 - i; j++){
+                if(comparer(sequence->Get(j), sequence->Get(j+1))){
+                    swap(sequence->Get(j), sequence->Get(j+1));
                     swapped = true;
                 }
             }
@@ -35,56 +31,43 @@ public:
         return sequence;
     }
 
-    template <template<typename> class ChildClass>
-    static ChildClass<T> InsertionSort(ChildClass<T> sequence, std::function<bool(T, T)> const & comparer){
-        if constexpr (static_cast<Sequence<T>*>(&sequence) == nullptr){
-            throw std::runtime_error("Wrong type");
-        }
+    static Sequence<T>* InsertionSort(Sequence<T>* sequence, std::function<bool(T, T)> const & comparer){
         T key;
         int j;
-        for(int i = 1; i < sequence.GetLength(); i++){
-            key = sequence[i];
+        for(int i = 1; i < sequence->GetLength(); i++){
+            key = sequence->Get(i);
             j = i;
-            while(j > 0 && comparer(sequence[j-1], key)){
-                sequence[j] = sequence[j-1];
+            while(j > 0 && comparer(sequence->Get(j-1), key)){
+                sequence->Set(j, sequence->Get(j-1));
                 j--;
             }
-            sequence[j] = key;
+            sequence->Get(j) = key;
         }
         return sequence;
     }
 
-    template <template<typename> class ChildClass>
-    static ChildClass<T> HeapSort(ChildClass<T> sequence, std::function<bool(T, T)> const & comparer){
-        if constexpr (static_cast<Sequence<T>*>(&sequence) == nullptr){
-            throw std::runtime_error("Wrong type");
-        }
-        int count = sequence.GetLength();
+    static Sequence<T>* HeapSort(Sequence<T>* sequence, std::function<bool(T, T)> const & comparer){
+        int count = sequence->GetLength();
 
         for(int i = count / 2 - 1; i >= 0; i--){
             heapify(sequence, i, count, comparer);
         }
 
         for (int i = count - 1; i >= 0; i--) {
-            swap(sequence[0], sequence[i]);
+            swap(sequence->Get(0), sequence->Get(i));
             heapify(sequence, 0, i, comparer);
         }
 
         return sequence;
     }
 
-    template <template<typename> class ChildClass>
-    static ChildClass<T> QuickSort(ChildClass<T> sequence, std::function<bool(T, T)> const & comparer){
-        if constexpr (static_cast<Sequence<T>*>(&sequence) == nullptr){
-            throw std::runtime_error("Wrong type");
-        }
-        quickSort(sequence, 0, sequence.GetLength() - 1, comparer);
+    static Sequence<T>* QuickSort(Sequence<T>* sequence, std::function<bool(T, T)> const & comparer){
+        quickSort(sequence, 0, sequence->GetLength() - 1, comparer);
         return sequence;
     }
 
 private:
-    template <template<typename> class ChildClass>
-    static void quickSort(ChildClass<T> &seq, int low, int high, std::function<bool(T, T)> const & comp) {
+    static void quickSort(Sequence<T>* seq, int low, int high, std::function<bool(T, T)> const & comp) {
         if(low < high){
             int pi = partition(seq, low, high, comp);
 
@@ -92,35 +75,33 @@ private:
             quickSort(seq, pi + 1, high, comp);
         }
     }
-    template <template<typename> class ChildClass>
-    static int partition(ChildClass<T> &seq, int low, int high, std::function<bool(T, T)> const & comp) {
-        T pivot = seq[high];
+    static int partition(Sequence<T>* seq, int low, int high, std::function<bool(T, T)> const & comp) {
+        T pivot = seq->Get(high);
         int i = low - 1;
         for(int j = low; j <= high - 1; j++){
-            if(!comp(seq[j], pivot)){
+            if(!comp(seq->Get(j), pivot)){
                 i++;
-                swap(seq[i], seq[j]);
+                swap(seq->Get(i), seq->Get(j));
             }
         }
-        swap(seq[i + 1], seq[high]);
+        swap(seq->Get(i+1), seq->Get(high));
         return i + 1;
     }
-    template <template<typename> class ChildClass>
-    static void heapify(ChildClass<T> &seq, int i, int count, std::function<bool(T, T)> const & comp){
+    static void heapify(Sequence<T>* seq, int i, int count, std::function<bool(T, T)> const & comp){
         int largest = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
 
-        if(l < count && comp(seq[l], seq[largest])){
+        if(l < count && comp(seq->Get(l), seq->Get(largest))){
             largest = l;
         }
 
-        if(r < count && comp(seq[r], seq[largest])){
+        if(r < count && comp(seq->Get(r), seq->Get(largest))){
             largest = r;
         }
 
         if(largest != i){
-            swap(seq[i], seq[largest]);
+            swap(seq->Get(i), seq->Get(largest));
             heapify(seq, count, largest, comp);
         }
     };
