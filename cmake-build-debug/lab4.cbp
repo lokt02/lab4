@@ -378,6 +378,9 @@
 		<Unit filename="D:/CProj/lab4/Tests/ListSequenceTest.cpp">
 			<Option target="Tests"/>
 		</Unit>
+		<Unit filename="D:/CProj/lab4/Tests/SequenceSorterTest.cpp">
+			<Option target="Tests"/>
+		</Unit>
 		<Unit filename="D:/CProj/lab4/Tests/gtests/googlemock/src/gmock-all.cc">
 			<Option target="gmock_main"/>
 			<Option target="gmock"/>

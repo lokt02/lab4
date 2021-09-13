@@ -132,3 +132,33 @@ Tests\CMakeFiles\Tests.dir\ListSequenceTest.cpp.obj: ..\ListSequence.h
 Tests\CMakeFiles\Tests.dir\ListSequenceTest.cpp.obj: ..\Sequence.h
 Tests\CMakeFiles\Tests.dir\ListSequenceTest.cpp.obj: ..\Tests\ListSequenceTest.cpp
 
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\gtest-death-test.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\gtest-matchers.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\gtest-message.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\gtest-param-test.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\gtest-printers.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\gtest-test-part.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\gtest-typed-test.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\gtest.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\gtest_pred_impl.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\gtest_prod.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\internal\custom\gtest-port.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\internal\custom\gtest-printers.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\internal\gtest-death-test-internal.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\internal\gtest-filepath.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\internal\gtest-internal.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\internal\gtest-param-util.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\internal\gtest-port-arch.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\internal\gtest-port.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\internal\gtest-string.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\gtests\googletest\include\gtest\internal\gtest-type-util.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\ArraySequence.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\DynamicArray.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Enumerable.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\ICollection.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\LinkedList.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\ListSequence.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Sequence.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\SequenceSorter.h
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\SequenceSorterTest.cpp
+

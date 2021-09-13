@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Tests.dir/EnumerableTest.cpp.obj"
   "CMakeFiles/Tests.dir/LinkedListTest.cpp.obj"
   "CMakeFiles/Tests.dir/ListSequenceTest.cpp.obj"
+  "CMakeFiles/Tests.dir/SequenceSorterTest.cpp.obj"
   "Tests.exe"
   "Tests.exe.manifest"
   "Tests.lib"

@@ -185,13 +185,39 @@ Tests\CMakeFiles\Tests.dir\ArraySequenceTest.cpp.s: cmake_force
 <<
 	cd D:\CProj\lab4\cmake-build-debug
 
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: Tests\CMakeFiles\Tests.dir\flags.make
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj: ..\Tests\SequenceSorterTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CProj\lab4\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object Tests/CMakeFiles/Tests.dir/SequenceSorterTest.cpp.obj"
+	cd D:\CProj\lab4\cmake-build-debug\Tests
+	C:\PROGRA~2\MICROS~2\2017\BUILDT~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj /FdCMakeFiles\Tests.dir\ /FS -c D:\CProj\lab4\Tests\SequenceSorterTest.cpp
+<<
+	cd D:\CProj\lab4\cmake-build-debug
+
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Tests.dir/SequenceSorterTest.cpp.i"
+	cd D:\CProj\lab4\cmake-build-debug\Tests
+	C:\PROGRA~2\MICROS~2\2017\BUILDT~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe > CMakeFiles\Tests.dir\SequenceSorterTest.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\CProj\lab4\Tests\SequenceSorterTest.cpp
+<<
+	cd D:\CProj\lab4\cmake-build-debug
+
+Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Tests.dir/SequenceSorterTest.cpp.s"
+	cd D:\CProj\lab4\cmake-build-debug\Tests
+	C:\PROGRA~2\MICROS~2\2017\BUILDT~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\Tests.dir\SequenceSorterTest.cpp.s /c D:\CProj\lab4\Tests\SequenceSorterTest.cpp
+<<
+	cd D:\CProj\lab4\cmake-build-debug
+
 # Object files for target Tests
 Tests_OBJECTS = \
 "CMakeFiles\Tests.dir\EnumerableTest.cpp.obj" \
 "CMakeFiles\Tests.dir\LinkedListTest.cpp.obj" \
 "CMakeFiles\Tests.dir\DynamicArrayTest.cpp.obj" \
 "CMakeFiles\Tests.dir\ListSequenceTest.cpp.obj" \
-"CMakeFiles\Tests.dir\ArraySequenceTest.cpp.obj"
+"CMakeFiles\Tests.dir\ArraySequenceTest.cpp.obj" \
+"CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj"
 
 # External object files for target Tests
 Tests_EXTERNAL_OBJECTS =
@@ -201,12 +227,13 @@ Tests\Tests.exe: Tests\CMakeFiles\Tests.dir\LinkedListTest.cpp.obj
 Tests\Tests.exe: Tests\CMakeFiles\Tests.dir\DynamicArrayTest.cpp.obj
 Tests\Tests.exe: Tests\CMakeFiles\Tests.dir\ListSequenceTest.cpp.obj
 Tests\Tests.exe: Tests\CMakeFiles\Tests.dir\ArraySequenceTest.cpp.obj
+Tests\Tests.exe: Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj
 Tests\Tests.exe: Tests\CMakeFiles\Tests.dir\build.make
 Tests\Tests.exe: lib\gtestd.lib
 Tests\Tests.exe: lib\gtest_maind.lib
 Tests\Tests.exe: lib\gtestd.lib
 Tests\Tests.exe: Tests\CMakeFiles\Tests.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\CProj\lab4\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Tests.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\CProj\lab4\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Tests.exe"
 	cd D:\CProj\lab4\cmake-build-debug\Tests
 	"C:\Program Files\JetBrains\CLion 2021.1.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\Tests.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests -- C:\PROGRA~2\MICROS~2\2017\BUILDT~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\Tests.dir\objects1.rsp @<<
  /out:Tests.exe /implib:Tests.lib /pdb:D:\CProj\lab4\cmake-build-debug\Tests\Tests.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  ..\lib\gtestd.lib ..\lib\gtest_maind.lib ..\lib\gtestd.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 

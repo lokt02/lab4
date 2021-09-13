@@ -341,6 +341,39 @@ ListSequenceTest.cpp.s:
 	cd D:\CProj\lab4\cmake-build-debug\Tests
 .PHONY : ListSequenceTest.cpp.s
 
+SequenceSorterTest.obj: SequenceSorterTest.cpp.obj
+
+.PHONY : SequenceSorterTest.obj
+
+# target to build an object file
+SequenceSorterTest.cpp.obj:
+	cd D:\CProj\lab4\cmake-build-debug
+	$(MAKE) $(MAKESILENT) -f Tests\CMakeFiles\Tests.dir\build.make /nologo -$(MAKEFLAGS) Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.obj
+	cd D:\CProj\lab4\cmake-build-debug\Tests
+.PHONY : SequenceSorterTest.cpp.obj
+
+SequenceSorterTest.i: SequenceSorterTest.cpp.i
+
+.PHONY : SequenceSorterTest.i
+
+# target to preprocess a source file
+SequenceSorterTest.cpp.i:
+	cd D:\CProj\lab4\cmake-build-debug
+	$(MAKE) $(MAKESILENT) -f Tests\CMakeFiles\Tests.dir\build.make /nologo -$(MAKEFLAGS) Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.i
+	cd D:\CProj\lab4\cmake-build-debug\Tests
+.PHONY : SequenceSorterTest.cpp.i
+
+SequenceSorterTest.s: SequenceSorterTest.cpp.s
+
+.PHONY : SequenceSorterTest.s
+
+# target to generate assembly for a file
+SequenceSorterTest.cpp.s:
+	cd D:\CProj\lab4\cmake-build-debug
+	$(MAKE) $(MAKESILENT) -f Tests\CMakeFiles\Tests.dir\build.make /nologo -$(MAKEFLAGS) Tests\CMakeFiles\Tests.dir\SequenceSorterTest.cpp.s
+	cd D:\CProj\lab4\cmake-build-debug\Tests
+.PHONY : SequenceSorterTest.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -368,6 +401,9 @@ help:
 	@echo ... ListSequenceTest.obj
 	@echo ... ListSequenceTest.i
 	@echo ... ListSequenceTest.s
+	@echo ... SequenceSorterTest.obj
+	@echo ... SequenceSorterTest.i
+	@echo ... SequenceSorterTest.s
 .PHONY : help
 
 

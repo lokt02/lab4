@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "D:/CProj/lab4/Tests/EnumerableTest.cpp" "D:/CProj/lab4/cmake-build-debug/Tests/CMakeFiles/Tests.dir/EnumerableTest.cpp.obj"
   "D:/CProj/lab4/Tests/LinkedListTest.cpp" "D:/CProj/lab4/cmake-build-debug/Tests/CMakeFiles/Tests.dir/LinkedListTest.cpp.obj"
   "D:/CProj/lab4/Tests/ListSequenceTest.cpp" "D:/CProj/lab4/cmake-build-debug/Tests/CMakeFiles/Tests.dir/ListSequenceTest.cpp.obj"
+  "D:/CProj/lab4/Tests/SequenceSorterTest.cpp" "D:/CProj/lab4/cmake-build-debug/Tests/CMakeFiles/Tests.dir/SequenceSorterTest.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 
