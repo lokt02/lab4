@@ -22,20 +22,20 @@ int f(int x, int y) {
 }
 
 TEST(Enumerable, ListSequence_Map) {
-    ListSequence<int> arr = {11, 12, 3, 4, -5};
-    ListSequence<int>* res = Enumerable<int>::Map(arr, Pow);
+    auto arr = new ListSequence<int>({11, 12, 3, 4, -5});
+    auto res = (ListSequence<int>*)Enumerable<int>::Map(arr, Pow);
     EXPECT_TRUE(*res == ListSequence<int>({121, 144, 9, 16, 25}));
-    ListSequence<int>* res1 = Enumerable<int>::Map(ListSequence<int>({}), Pow);
+    auto res1 = (ListSequence<int>*)Enumerable<int>::Map(new ListSequence<int>({}), Pow);
     EXPECT_TRUE(*res1 == ListSequence<int>({}));
-    ListSequence<bool> *res2 = Enumerable<int>::Map(ListSequence<int>({11, 12, 3, 4, 6}), IsEven);
+    auto res2 = (ListSequence<bool>*)Enumerable<int>::Map(new ListSequence<int>({11, 12, 3, 4, 6}), IsEven);
     EXPECT_TRUE(*res2 == ListSequence<bool>({false, true, false, true, true}));
     int (*wrong)(int) = nullptr;
     EXPECT_ANY_THROW(Enumerable<int>::Map(arr, wrong));
 }
 TEST(Enumerable, ListSequence_Reduce) {
-    ListSequence<int> arr = {11, 12, 3, 4, -5};
+    ListSequence<int>* arr = new ListSequence<int>({11, 12, 3, 4, -5});
     EXPECT_EQ(Enumerable<int>::Reduce(arr, f, 0), 25);
-    int res2 = Enumerable<int>::Reduce(ListSequence<int>({}), f, -1);
+    int res2 = Enumerable<int>::Reduce(new ListSequence<int>({}), f, -1);
     EXPECT_EQ(res2, -1);
     int (*wrong)(int, int) = nullptr;
     EXPECT_ANY_THROW(Enumerable<int>::Reduce(arr, wrong, 0));
