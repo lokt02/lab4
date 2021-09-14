@@ -48,10 +48,10 @@
 				</MakeCommands>
 			</Target>
 			<Target title="lab4">
-				<Option output="D:/CProj/lab4/cmake-build-debug/lab4.exe" prefix_auto="0" extension_auto="0"/>
+				<Option output="D:/CProj/lab4/cmake-build-debug/lab4.dll" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="D:/CProj/lab4/cmake-build-debug"/>
 				<Option object_output="./"/>
-				<Option type="1"/>
+				<Option type="3"/>
 				<Option compiler="msvc8"/>
 				<Compiler>
 					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
@@ -70,10 +70,10 @@
 				</MakeCommands>
 			</Target>
 			<Target title="lab4/fast">
-				<Option output="D:/CProj/lab4/cmake-build-debug/lab4.exe" prefix_auto="0" extension_auto="0"/>
+				<Option output="D:/CProj/lab4/cmake-build-debug/lab4.dll" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="D:/CProj/lab4/cmake-build-debug"/>
 				<Option object_output="./"/>
-				<Option type="1"/>
+				<Option type="3"/>
 				<Option compiler="msvc8"/>
 				<Compiler>
 					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>

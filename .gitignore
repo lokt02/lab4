@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+*.cache
+*.lock
+GUI/.vs/
+GUI/GUI/obj/
