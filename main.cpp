@@ -17,6 +17,7 @@ int main() {
     return 0;
 }
 
-extern "C" __declspec(dllexport) BOOL LabFunc(){
-    return true;
+extern "C" __declspec(dllexport) CHAR* LabFunc(){
+    // string s1 = "Hello world!";
+    return (char*)"Hello world!";
 }

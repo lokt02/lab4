@@ -21,7 +21,7 @@ namespace GUI
     {
 
         [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "LabFunc")]
-        public static extern bool LabFunc();
+        public static extern IntPtr LabFunc();
 
         public MainWindow()
         {
@@ -30,7 +30,9 @@ namespace GUI
 
         private void OnTextBoxInit(object sender, EventArgs e)
         {
-            textBox.Text = LabFunc().ToString();
+
+            textBox.Text = Marshal.PtrToStringAnsi(LabFunc());
+            // textBox.Text = LabFunc().ToString();
         }
     }
 }
