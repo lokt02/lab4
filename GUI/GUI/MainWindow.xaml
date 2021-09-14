@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="127" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="774" Margin="10,114,0,0" FontSize="24" Initialized="OnTextBoxInit"/>
+        Title="MainWindow" Height="336" Width="800">
+    <Grid HorizontalAlignment="Left" Margin="10,10,0,-103.6" Width="774" Height="400" VerticalAlignment="Top">
+        <Rectangle Fill="#FFF4F4F5" Height="192" Stroke="Black" Width="548" Margin="11,10,215,198"/>
+        <TextBlock x:Name="text" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="170" Width="516" Margin="27,18,0,0"/>
+        <ListBox x:Name="list2" HorizontalAlignment="Left" Height="44" VerticalAlignment="Top" Width="82" Margin="683,18,0,0">
+            <RadioButton x:Name="intBut" Content="Integer"/>
+            <RadioButton x:Name="floatBut"  Content="Float" IsChecked="True"/>
+        </ListBox>
+        <ListBox x:Name="list1" HorizontalAlignment="Left" Height="44" VerticalAlignment="Top" Width="119" Margin="564,18,0,0">
+            <RadioButton x:Name="listBut" Content="ListSequence"/>
+            <RadioButton x:Name="arrBut" Content="ArraySequence" IsChecked="True"/>
+        </ListBox>
+        <Button x:Name="SortButton" Content="Sort" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Margin="27,230,0,0" Height="41" FontSize="22"/>
+
+        <Button x:Name="InitButton" Content="Initialization" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="180,230,0,0" Height="41" FontSize="22" Click="InitButton_Click"/>
+        <Button x:Name="Display" Content="Display Sequence" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Margin="341,230,0,0" Height="41" FontSize="22"/>
+
+
+        <Button x:Name="RandIntArray" Content="Random Integer Array" HorizontalAlignment="Left" VerticalAlignment="Top" Width="151" Margin="613,67,0,0" Height="19"/>
+        <Button x:Name="RandFloatArray" Content="Random Float Array" HorizontalAlignment="Left" VerticalAlignment="Top" Width="151" Margin="613,91,0,0" Height="19"/>
+
+        <Button x:Name="RandIntList" Content="Random Integer List" HorizontalAlignment="Left" VerticalAlignment="Top" Width="151" Margin="613,115,0,0" Height="19"/>
+        <Button x:Name="RandFloatList" Content="Random Float List" HorizontalAlignment="Left" VerticalAlignment="Top" Width="151" Margin="613,139,0,0" Height="19"/>
+        <ScrollBar x:Name="lengthScrollbar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="192" Width="14" Margin="663,87,0,0" RenderTransformOrigin="0.5,0.5" ValueChanged="LengthScrollbar_ValueChanged">
+            <ScrollBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ScrollBar.RenderTransform>
+        </ScrollBar>
+
+        <Label x:Name="lengthCounter" Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="564,140,172,234" Width="38"/>
+        <ListBox HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="112" Margin="652,202,0,0">
+            <RadioButton x:Name="bubble" Content="Bubble Sort" IsChecked="True"/>
+            <RadioButton x:Name="insertion" Content="Insertion Sort"/>
+            <RadioButton x:Name="heap" Content="Heap Sort"/>
+            <RadioButton x:Name="quick" Content="Quick Sort"/>
+        </ListBox>
     </Grid>
 </Window>
