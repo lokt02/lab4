@@ -24,10 +24,37 @@
 
 template<class T>
 string DisplaySequence(Sequence<T>* sequence){
-    string output;
+    string output = "{ ";
     for(int i = 0; i < sequence->GetLength(); i++){
-        output += to_string(sequence->Get(i));
+        if(output.size() > 300){
+            output += "...";
+            break;
+        }
+
+        string temp = to_string(sequence->Get(i));
+        if(temp.find(".") != std::string::npos) {
+            for (int j = temp.size() - 1; j >= 0; j--) {
+                if (temp[j] == '0') {
+                    temp.erase(j, 1);
+                }
+                else{
+                    if(temp[j] == '.'){
+                        temp.erase(j, 1);
+                    }
+                    break;
+                }
+            }
+        }
+        output += temp;
+
+        if(sequence->GetLength() - 1 != i){
+            output += ", ";
+        }
+        if(i % 5 == 0){
+            output += "\n";
+        }
     }
+    output += " }";
     return output;
 }
 
@@ -50,40 +77,28 @@ extern "C" __declspec(dllexport) void AppendFloatList(float item) {
 }
 
 extern "C" __declspec(dllexport) CHAR* InitIntArray() {
-    string message = "Integer array initialized";
-    char *c = nullptr;
-    message.copy(c, message.size() + 1);
     delete arr1;
     arr1 = new ArraySequence<int>();
 
-    return c;
+    return (char*)"Integer array initialized";
 }
 extern "C" __declspec(dllexport) CHAR* InitFloatArray() {
-    string message = "Float array initialized";
-    char *c = nullptr;
-    message.copy(c, message.size() + 1);
     delete arr2;
     arr2 = new ArraySequence<float>();
-    return c;
+    return (char*)"Float array initialized";
 }
 extern "C" __declspec(dllexport) CHAR* InitIntList() {
-    string message = "Integer list initialized";
-    char *c = nullptr;
-    message.copy(c, message.size() + 1);
     delete list1;
     list1 = new ListSequence<int>();
-    return c;
+    return (char*)"Integer list initialized";
 }
 extern "C" __declspec(dllexport) CHAR* InitFloatList() {
-    string message = "Float list initialized";
-    char *c = nullptr;
-    message.copy(c, message.size() + 1);
     delete list2;
     list2 = new ListSequence<float>();
-    return c;
+    return (char*)"Float list initialized";
 }
 
-extern "C" __declspec(dllexport) CHAR* RandomIntArray(size_t length) {
+extern "C" __declspec(dllexport) void RandomIntArray(size_t length, char* output) {
     delete arr1;
     arr1 = new ArraySequence<int>();
 
@@ -95,12 +110,10 @@ extern "C" __declspec(dllexport) CHAR* RandomIntArray(size_t length) {
     }
 
     string message = DisplaySequence(arr1);
-    char *c = nullptr;
-    message.copy(c, message.size() + 1);
-    return c;
+    strcpy(output, message.c_str());
 
 }
-extern "C" __declspec(dllexport) CHAR* RandomFloatArray(size_t length) {
+extern "C" __declspec(dllexport) void RandomFloatArray(size_t length, char* output) {
     delete arr2;
     arr2 = new ArraySequence<float>();
 
@@ -111,12 +124,10 @@ extern "C" __declspec(dllexport) CHAR* RandomFloatArray(size_t length) {
         arr2->Append((float)dist(gen));
     }
 
-    string message = DisplaySequence(arr2);
-    char *c = nullptr;
-    message.copy(c, message.size() + 1);
-    return c;
+    string message = DisplaySequence(arr1);
+    strcpy(output, message.c_str());
 }
-extern "C" __declspec(dllexport) CHAR* RandomIntList(size_t length) {
+extern "C" __declspec(dllexport) void RandomIntList(size_t length, char* output) {
     delete list1;
     list1 = new ListSequence<int>();
 
@@ -127,12 +138,10 @@ extern "C" __declspec(dllexport) CHAR* RandomIntList(size_t length) {
         list1->Append(dist(gen));
     }
 
-    string message = DisplaySequence(list1);
-    char *c = nullptr;
-    message.copy(c, message.size() + 1);
-    return c;
+    string message = DisplaySequence(arr1);
+    strcpy(output, message.c_str());
 }
-extern "C" __declspec(dllexport) CHAR* RandomFloatList(size_t length) {
+extern "C" __declspec(dllexport) void RandomFloatList(size_t length, char* output) {
     delete list2;
     list2 = new ListSequence<float>();
 
@@ -143,10 +152,8 @@ extern "C" __declspec(dllexport) CHAR* RandomFloatList(size_t length) {
         list2->Append((float)dist(gen));
     }
 
-    string message = DisplaySequence(list2);
-    char *c = nullptr;
-    message.copy(c, message.size() + 1);
-    return c;
+    string message = DisplaySequence(arr1);
+    strcpy(output, message.c_str());
 }
 
 extern "C" __declspec(dllexport) void SortIntArray(size_t sort_method, size_t sort_type) {
@@ -366,7 +373,7 @@ extern "C" __declspec(dllexport) void SortFloatList(size_t sort_method, size_t s
     }
 }
 
-extern "C" __declspec(dllexport) CHAR* DisplayArray(int arr_number){
+extern "C" __declspec(dllexport) void DisplayArray(int arr_number, char* output){
     string message;
     switch(arr_number){
         case 0:
@@ -386,9 +393,7 @@ extern "C" __declspec(dllexport) CHAR* DisplayArray(int arr_number){
             break;
     }
 
-    char *c = nullptr;
-    message.copy(c, message.size() + 1);
-    return c;
+    strcpy(output, message.c_str());
 }
 
 // 0 - initialize dynamic array by yourself

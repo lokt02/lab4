@@ -20,49 +20,57 @@ namespace GUI
     public partial class MainWindow : Window
     {
 
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "InitIntArray")]
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "InitIntArray", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr InitIntArray();
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "InitFloatArray")]
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "InitFloatArray", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr InitFloatArray();
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "InitIntList")]
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "InitIntList", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr InitIntList();
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "InitFloatList")]
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "InitFloatList", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr InitFloatList();
 
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "AppendIntArray")]
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "AppendIntArray", CallingConvention = CallingConvention.Cdecl)]
         public static extern void AppendIntArray(int item);
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "AppendFloatArray")]
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "AppendFloatArray", CallingConvention = CallingConvention.Cdecl)]
         public static extern void AppendFloatArray(float item);
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "AppendIntList")]
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "AppendIntList", CallingConvention = CallingConvention.Cdecl)]
         public static extern void AppendIntList(int item);
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "AppendFloatList")]
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "AppendFloatList", CallingConvention = CallingConvention.Cdecl)]
         public static extern void AppendFloatList(float item);
 
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "RandomIntArray")]
-        public static extern IntPtr RandomIntArray(int length);
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "RandomFloatArray")]
-        public static extern IntPtr RandomFloatArray(int length);
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "RandomIntList")]
-        public static extern IntPtr RandomIntList(int length);
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "RandomFloatList")]
-        public static extern IntPtr RandomFloatList(int length);
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "RandomIntArray", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr RandomIntArray(int length, StringBuilder output);
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "RandomFloatArray", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr RandomFloatArray(int length, StringBuilder output);
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "RandomIntList", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr RandomIntList(int length, StringBuilder output);
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "RandomFloatList", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr RandomFloatList(int length, StringBuilder output);
 
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "SortIntArray")]
-        public static extern void SortIntArray();
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "SortFloatArray")]
-        public static extern void SortFloatArray();
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "SortIntList")]
-        public static extern void SortIntList();
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "SortFloatList")]
-        public static extern void SortFloatList();
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "SortIntArray", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SortIntArray(int method, int type);
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "SortFloatArray", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SortFloatArray(int method, int type);
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "SortIntList", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SortIntList(int method, int type);
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "SortFloatList", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SortFloatList(int method, int type);
 
-        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "DisplayArray")]
-        public static extern IntPtr DisplayArray(int arr_number);
+        [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "DisplayArray", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void DisplayArray(int arr_number, StringBuilder output);
 
         public MainWindow()
         {
             InitializeComponent();
+            InitIntArray();
+            InitFloatArray();
+            InitIntList();
+            InitFloatList();
+
+            randomColSize = 0;
         }
+
+        private int randomColSize;
 
         private void InitButton_Click(object sender, RoutedEventArgs e)
         {
@@ -89,11 +97,358 @@ namespace GUI
                 }
             }
             text.Text += "\n";
+            TextLayoutUpdate();
+        }
+
+        private void TextLayoutUpdate()
+        {
+            var textBox = text.Text.Split("\n".ToCharArray());
+            if (textBox.Length > 11)
+            {
+                for(int i = 0; i < textBox.Length - 11; i++)
+                {
+                    textBox[i] = "";
+                }
+                text.Text = "";
+                for (int i = 0; i < textBox.Length - 1; i++)
+                {
+                    if(textBox[i] != "") text.Text += textBox[i] + "\n";
+                }
+            }
         }
 
         private void LengthScrollbar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
+        }
+
+        private void Display_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder sb = new StringBuilder(10000);
+            if(text.Text.Length > 200)
+            {
+                text.Text = "";
+            }
+            if ((bool)arrBut.IsChecked)
+            {
+                if ((bool)intBut.IsChecked)
+                {
+                    DisplayArray(0, sb);
+                }
+                if ((bool)floatBut.IsChecked)
+                {
+                    DisplayArray(1, sb);
+                }
+            }
+            if ((bool)listBut.IsChecked)
+            {
+                if ((bool)intBut.IsChecked)
+                {
+                    DisplayArray(2, sb);
+                }
+                if ((bool)floatBut.IsChecked)
+                {
+                    DisplayArray(3, sb);
+                }
+            }
+            text.Text += sb.ToString() + "\n";
+            TextLayoutUpdate();
+        }
+
+        private void Append_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)arrBut.IsChecked)
+            {
+                if ((bool)intBut.IsChecked)
+                {
+                    int item;
+                    if (int.TryParse(itemText.Text, out item))
+                    {
+                        AppendIntArray(item);
+                        text.Text += "Item appended!\n";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please! Enter correct number!");
+                    }
+                }
+                if ((bool)floatBut.IsChecked)
+                {
+                    float item1;
+                    if (float.TryParse(itemText.Text, out item1))
+                    {
+                        AppendFloatArray(item1);
+                        text.Text += "Item appended!\n";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please! Enter correct number!");
+                    }
+                }
+            }
+            if ((bool)listBut.IsChecked)
+            {
+                if ((bool)intBut.IsChecked)
+                {
+                    int item;
+                    if (int.TryParse(itemText.Text, out item))
+                    {
+                        AppendIntList(item);
+                        text.Text += "Item appended!\n";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please! Enter correct number!");
+                    }
+                }
+                if ((bool)floatBut.IsChecked)
+                {
+                    float item1;
+                    if (float.TryParse(itemText.Text, out item1))
+                    {
+                        AppendFloatList(item1);
+                        text.Text += "Item appended!\n";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please! Enter correct number!");
+                    }
+                }
+            }
+            TextLayoutUpdate();
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            randomColSize = (int)slider.Value;
+            lengthCounter.Content = randomColSize.ToString();
+        }
+
+        private void RandFloatList_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder sb = new StringBuilder(10000);
+            if ((bool)arrBut.IsChecked)
+            {
+                if ((bool)intBut.IsChecked)
+                {
+                    RandomIntArray(randomColSize, sb);
+                }
+                if ((bool)floatBut.IsChecked)
+                {
+                    RandomFloatArray(randomColSize, sb);
+                }
+            }
+            if ((bool)listBut.IsChecked)
+            {
+                if ((bool)intBut.IsChecked)
+                {
+                    RandomIntList(randomColSize, sb);
+                }
+                if ((bool)floatBut.IsChecked)
+                {
+                    RandomFloatList(randomColSize, sb);
+                }
+            }
+            text.Text += sb.ToString() + "\n";
+            TextLayoutUpdate();
+        }
+
+        private void SortButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)arrBut.IsChecked)
+            {
+                if ((bool)intBut.IsChecked)
+                {
+                    if ((bool)bubble.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortIntArray(0, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortIntArray(0, 1);
+                        }
+                    }
+                    else if ((bool)insertion.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortIntArray(1, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortIntArray(1, 1);
+                        }
+                    }
+                    else if ((bool)heap.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortIntArray(2, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortIntArray(2, 1);
+                        }
+                    }
+                    else if ((bool)quick.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortIntArray(3, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortIntArray(3, 1);
+                        }
+                    }
+                }
+                if ((bool)floatBut.IsChecked)
+                {
+                    if ((bool)bubble.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortFloatArray(0, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortFloatArray(0, 1);
+                        }
+                    }
+                    else if ((bool)insertion.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortFloatArray(1, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortFloatArray(1, 1);
+                        }
+                    }
+                    else if ((bool)heap.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortFloatArray(2, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortFloatArray(2, 1);
+                        }
+                    }
+                    else if ((bool)quick.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortFloatArray(3, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortFloatArray(3, 1);
+                        }
+                    }
+                }
+            }
+            if ((bool)listBut.IsChecked)
+            {
+                if ((bool)intBut.IsChecked)
+                {
+                    if ((bool)bubble.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortIntList(0, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortIntList(0, 1);
+                        }
+                    }
+                    else if ((bool)insertion.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortIntList(1, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortIntList(1, 1);
+                        }
+                    }
+                    else if ((bool)heap.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortIntList(2, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortIntList(2, 1);
+                        }
+                    }
+                    else if ((bool)quick.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortIntList(3, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortIntList(3, 1);
+                        }
+                    }
+                }
+                if ((bool)floatBut.IsChecked)
+                {
+                    if ((bool)bubble.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortFloatList(0, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortFloatList(0, 1);
+                        }
+                    }
+                    else if ((bool)insertion.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortFloatList(1, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortFloatList(1, 1);
+                        }
+                    }
+                    else if ((bool)heap.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortFloatList(2, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortFloatList(2, 1);
+                        }
+                    }
+                    else if ((bool)quick.IsChecked)
+                    {
+                        if ((bool)more.IsChecked)
+                        {
+                            SortFloatList(3, 0);
+                        }
+                        else if ((bool)less.IsChecked)
+                        {
+                            SortFloatList(3, 1);
+                        }
+                    }
+                }
+            }
         }
     }
 }
