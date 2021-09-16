@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
         Title="MainWindow" Height="449.6" Width="800">
@@ -17,7 +18,7 @@
             <RadioButton x:Name="intBut" Content="Integer"/>
             <RadioButton x:Name="floatBut"  Content="Float" IsChecked="True"/>
         </ListBox>
-        <ListBox x:Name="list3" HorizontalAlignment="Left" Height="44" VerticalAlignment="Top" Width="108" Margin="482,279,0,0" Grid.RowSpan="2">
+        <ListBox x:Name="list3" HorizontalAlignment="Left" Height="44" VerticalAlignment="Top" Width="108" Margin="482,276,0,0" Grid.RowSpan="2">
             <RadioButton x:Name="more" Content="Ascending"/>
             <RadioButton x:Name="less"  Content="Descending" IsChecked="True"/>
         </ListBox>
@@ -25,23 +26,49 @@
             <RadioButton x:Name="listBut" Content="ListSequence"/>
             <RadioButton x:Name="arrBut" Content="ArraySequence" IsChecked="True"/>
         </ListBox>
-        <Button x:Name="SortButton" Content="Sort" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Margin="27,230,0,0" Height="41" FontSize="22" Click="SortButton_Click"/>
+        <Button x:Name="SortButton" Content="Sort" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="10,5.4,0,0" Height="41" FontSize="22" Click="SortButton_Click" Grid.Row="1"/>
 
-        <Button x:Name="InitButton" Content="Initialization" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="180,230,0,0" Height="41" FontSize="22" Click="InitButton_Click"/>
-        <Button x:Name="Display" Content="Display" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Margin="27,10.4,0,0" Height="41" FontSize="22" Grid.Row="1" Click="Display_Click"/>
-        <Button x:Name="RandFloatList" Content="Random" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="180,10.4,0,0" Height="41" FontSize="22" Grid.Row="1" Click="RandFloatList_Click"/>
+        <Button x:Name="InitButton" Content="Initialization" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="10,207,0,0" Height="41" FontSize="22" Click="InitButton_Click"/>
+        <Button x:Name="Display" Content="Display" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="10,51.4,0,0" Height="41" FontSize="22" Grid.Row="1" Click="Display_Click"/>
+        <Button x:Name="RandFloatList" Content="Random" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="10,257,0,0" Height="41" FontSize="22" Click="RandFloatList_Click" Grid.RowSpan="2"/>
 
-        <Label x:Name="lengthCounter" Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="675,66.4,10,12" Width="89" Grid.Row="1"/>
-        <ListBox HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="112" Margin="595,227,0,0" Grid.RowSpan="2">
+        <Label x:Name="lengthCounter" Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="692,41.4,-7,39" Width="89" Grid.Row="1"/>
+        <ListBox HorizontalAlignment="Left" Height="93" VerticalAlignment="Top" Width="112" Margin="595,227,0,0" Grid.RowSpan="2">
             <RadioButton x:Name="bubble" Content="Bubble Sort" IsChecked="True"/>
             <RadioButton x:Name="insertion" Content="Insertion Sort"/>
             <RadioButton x:Name="heap" Content="Heap Sort"/>
             <RadioButton x:Name="quick" Content="Quick Sort"/>
         </ListBox>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Items in random collection:" VerticalAlignment="Top" Margin="526,71.4,0,0" Grid.Row="1"/>
-        <Slider x:Name="slider" HorizontalAlignment="Left" VerticalAlignment="Top" Width="249" Margin="515,47.4,0,0" Grid.Row="1" ValueChanged="Slider_ValueChanged" Maximum="60000"/>
-        <TextBox x:Name="itemText" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Item" VerticalAlignment="Top" Width="120" Margin="357,279,0,0" Grid.RowSpan="2"/>
-        <Button x:Name="Append" Content="Append" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Margin="357,9.4,0,0" Grid.Row="1" Height="42" FontSize="22" Click="Append_Click"/>
-        <Canvas x:Name="Canvas" HorizontalAlignment="Left" Height="192" VerticalAlignment="Top" Width="387" Margin="377,10,0,0" Background="#FFEAEAEA"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Items in random collection:" VerticalAlignment="Top" Margin="543,45.4,0,0" Grid.Row="1"/>
+        <Slider x:Name="slider" HorizontalAlignment="Left" VerticalAlignment="Top" Width="249" Margin="515,23.4,0,0" Grid.Row="1" ValueChanged="Slider_ValueChanged" Maximum="60000"/>
+        <TextBox x:Name="itemText" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Item" VerticalAlignment="Top" Width="120" Margin="357,23.4,0,0" Grid.Row="1"/>
+        <Button x:Name="Append" Content="Append" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Margin="357,52.4,0,0" Grid.Row="1" Height="40" FontSize="22" Click="Append_Click"/>
+        <Canvas x:Name="Canvas" HorizontalAlignment="Left" Height="192" VerticalAlignment="Top" Width="387" Margin="377,10,0,0" Background="#FFEAEAEA">
+            <lvc:CartesianChart x:Name="timeChart" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Height="192" Width="387">
+                <lvc:CartesianChart.Series>
+                    <lvc:LineSeries x:Name="line0" Values="{Binding Values}" LineSmoothness="1" StrokeThickness="1" 
+                                FontSize="20" Foreground="#6B00F0F0"
+                                Stroke="Cyan" Fill="Transparent" PointGeometrySize="0"/>
+                    <lvc:LineSeries Fill="Transparent" Stroke="#FF61B472" PointGeometrySize="0" StrokeThickness="1" />
+                    <lvc:LineSeries Fill="Transparent" Stroke="#FFAF3E71" PointGeometrySize="0" StrokeThickness="1" />
+                    <lvc:LineSeries Fill="Transparent" Stroke="#FFD3C843" PointGeometrySize="0" StrokeThickness="1" />
+                </lvc:CartesianChart.Series>
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis ShowLabels="True" MinValue="0" Title="item count">
+                        <lvc:Axis.Separator>
+                            <lvc:Separator StrokeThickness="1" Stroke="#8EB9B9B9" StrokeDashArray="8" Step="100" />
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis ShowLabels="True" MinValue="0" Title="time">
+                        <lvc:Axis.Separator>
+                            <lvc:Separator StrokeThickness="1" Stroke="#8EB9B9B9" StrokeDashArray="8" Step="100" />
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+        </Canvas>
+        <Button x:Name="BuildGraph" Content="Build Graph" HorizontalAlignment="Left" VerticalAlignment="Top" Width="183" Margin="158,52.4,0,0" Height="40" FontSize="22" Grid.Row="1" Click="BuildGraph_Click"/>
     </Grid>
 </Window>

@@ -13,6 +13,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.Defaults;
+using LiveCharts.Configurations;
+using System.Threading;
+using System.Diagnostics;
 
 namespace GUI
 {
@@ -59,6 +65,8 @@ namespace GUI
         [DllImport("D:/CProj/lab4/cmake-build-debug/lab4.dll", EntryPoint = "DisplayArray", CallingConvention = CallingConvention.Cdecl)]
         public static extern void DisplayArray(int arr_number, StringBuilder output);
 
+        Thread bubbleThread;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -68,36 +76,46 @@ namespace GUI
             InitFloatList();
 
             randomColSize = 0;
+
+            // timeChart.AxisX = new AxesCollection();
+            // timeChart.AxisY = new AxesCollection();
+            canAccess = true;
+            bubbleThread = new Thread(BubbleSortThread);
         }
+
+        private bool canAccess;
 
         private int randomColSize;
 
         private void InitButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)arrBut.IsChecked)
+            if (canAccess)
             {
-                if ((bool)intBut.IsChecked)
+                if ((bool)arrBut.IsChecked)
                 {
-                    text.Text += Marshal.PtrToStringAnsi(InitIntArray());
+                    if ((bool)intBut.IsChecked)
+                    {
+                        text.Text += Marshal.PtrToStringAnsi(InitIntArray());
+                    }
+                    if ((bool)floatBut.IsChecked)
+                    {
+                        text.Text += Marshal.PtrToStringAnsi(InitFloatArray());
+                    }
                 }
-                if ((bool)floatBut.IsChecked)
+                if ((bool)listBut.IsChecked)
                 {
-                    text.Text += Marshal.PtrToStringAnsi(InitFloatArray());
+                    if ((bool)intBut.IsChecked)
+                    {
+                        text.Text += Marshal.PtrToStringAnsi(InitIntList());
+                    }
+                    if ((bool)floatBut.IsChecked)
+                    {
+                        text.Text += Marshal.PtrToStringAnsi(InitFloatList());
+                    }
                 }
+                text.Text += "\n";
+                TextLayoutUpdate();
             }
-            if ((bool)listBut.IsChecked)
-            {
-                if ((bool)intBut.IsChecked)
-                {
-                    text.Text += Marshal.PtrToStringAnsi(InitIntList());
-                }
-                if ((bool)floatBut.IsChecked)
-                {
-                    text.Text += Marshal.PtrToStringAnsi(InitFloatList());
-                }
-            }
-            text.Text += "\n";
-            TextLayoutUpdate();
         }
 
         private void TextLayoutUpdate()
@@ -124,98 +142,104 @@ namespace GUI
 
         private void Display_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder sb = new StringBuilder(10000);
-            if(text.Text.Length > 200)
+            if (canAccess)
             {
-                text.Text = "";
+                StringBuilder sb = new StringBuilder(10000);
+                if (text.Text.Length > 200)
+                {
+                    text.Text = "";
+                }
+                if ((bool)arrBut.IsChecked)
+                {
+                    if ((bool)intBut.IsChecked)
+                    {
+                        DisplayArray(0, sb);
+                    }
+                    if ((bool)floatBut.IsChecked)
+                    {
+                        DisplayArray(1, sb);
+                    }
+                }
+                if ((bool)listBut.IsChecked)
+                {
+                    if ((bool)intBut.IsChecked)
+                    {
+                        DisplayArray(2, sb);
+                    }
+                    if ((bool)floatBut.IsChecked)
+                    {
+                        DisplayArray(3, sb);
+                    }
+                }
+                text.Text += sb.ToString() + "\n";
+                TextLayoutUpdate();
             }
-            if ((bool)arrBut.IsChecked)
-            {
-                if ((bool)intBut.IsChecked)
-                {
-                    DisplayArray(0, sb);
-                }
-                if ((bool)floatBut.IsChecked)
-                {
-                    DisplayArray(1, sb);
-                }
-            }
-            if ((bool)listBut.IsChecked)
-            {
-                if ((bool)intBut.IsChecked)
-                {
-                    DisplayArray(2, sb);
-                }
-                if ((bool)floatBut.IsChecked)
-                {
-                    DisplayArray(3, sb);
-                }
-            }
-            text.Text += sb.ToString() + "\n";
-            TextLayoutUpdate();
         }
 
         private void Append_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)arrBut.IsChecked)
+            if (canAccess)
             {
-                if ((bool)intBut.IsChecked)
+                if ((bool)arrBut.IsChecked)
                 {
-                    int item;
-                    if (int.TryParse(itemText.Text, out item))
+                    if ((bool)intBut.IsChecked)
                     {
-                        AppendIntArray(item);
-                        text.Text += "Item appended!\n";
+                        int item;
+                        if (int.TryParse(itemText.Text, out item))
+                        {
+                            AppendIntArray(item);
+                            text.Text += "Item appended!\n";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please! Enter correct number!");
+                        }
                     }
-                    else
+                    if ((bool)floatBut.IsChecked)
                     {
-                        MessageBox.Show("Please! Enter correct number!");
+                        float item1;
+                        if (float.TryParse(itemText.Text, out item1))
+                        {
+                            AppendFloatArray(item1);
+                            text.Text += "Item appended!\n";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please! Enter correct number!");
+                        }
                     }
                 }
-                if ((bool)floatBut.IsChecked)
+                if ((bool)listBut.IsChecked)
                 {
-                    float item1;
-                    if (float.TryParse(itemText.Text, out item1))
+                    if ((bool)intBut.IsChecked)
                     {
-                        AppendFloatArray(item1);
-                        text.Text += "Item appended!\n";
+                        int item;
+                        if (int.TryParse(itemText.Text, out item))
+                        {
+                            AppendIntList(item);
+                            text.Text += "Item appended!\n";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please! Enter correct number!");
+                        }
                     }
-                    else
+                    if ((bool)floatBut.IsChecked)
                     {
-                        MessageBox.Show("Please! Enter correct number!");
+                        float item1;
+                        if (float.TryParse(itemText.Text, out item1))
+                        {
+                            AppendFloatList(item1);
+                            text.Text += "Item appended!\n";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please! Enter correct number!");
+                        }
                     }
                 }
+                TextLayoutUpdate();
             }
-            if ((bool)listBut.IsChecked)
-            {
-                if ((bool)intBut.IsChecked)
-                {
-                    int item;
-                    if (int.TryParse(itemText.Text, out item))
-                    {
-                        AppendIntList(item);
-                        text.Text += "Item appended!\n";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please! Enter correct number!");
-                    }
-                }
-                if ((bool)floatBut.IsChecked)
-                {
-                    float item1;
-                    if (float.TryParse(itemText.Text, out item1))
-                    {
-                        AppendFloatList(item1);
-                        text.Text += "Item appended!\n";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please! Enter correct number!");
-                    }
-                }
-            }
-            TextLayoutUpdate();
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -226,226 +250,304 @@ namespace GUI
 
         private void RandFloatList_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder sb = new StringBuilder(10000);
-            if ((bool)arrBut.IsChecked)
+            if (canAccess)
             {
-                if ((bool)intBut.IsChecked)
+                StringBuilder sb = new StringBuilder(10000);
+                if ((bool)arrBut.IsChecked)
                 {
-                    RandomIntArray(randomColSize, sb);
+                    if ((bool)intBut.IsChecked)
+                    {
+                        RandomIntArray(randomColSize, sb);
+                    }
+                    if ((bool)floatBut.IsChecked)
+                    {
+                        RandomFloatArray(randomColSize, sb);
+                    }
                 }
-                if ((bool)floatBut.IsChecked)
+                if ((bool)listBut.IsChecked)
                 {
-                    RandomFloatArray(randomColSize, sb);
+                    if ((bool)intBut.IsChecked)
+                    {
+                        RandomIntList(randomColSize, sb);
+                    }
+                    if ((bool)floatBut.IsChecked)
+                    {
+                        RandomFloatList(randomColSize, sb);
+                    }
                 }
+                text.Text += sb.ToString() + "\n";
+                TextLayoutUpdate();
             }
-            if ((bool)listBut.IsChecked)
-            {
-                if ((bool)intBut.IsChecked)
-                {
-                    RandomIntList(randomColSize, sb);
-                }
-                if ((bool)floatBut.IsChecked)
-                {
-                    RandomFloatList(randomColSize, sb);
-                }
-            }
-            text.Text += sb.ToString() + "\n";
-            TextLayoutUpdate();
         }
 
         private void SortButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)arrBut.IsChecked)
+            if (canAccess)
             {
-                if ((bool)intBut.IsChecked)
+                if ((bool)arrBut.IsChecked)
                 {
-                    if ((bool)bubble.IsChecked)
+                    if ((bool)intBut.IsChecked)
                     {
-                        if ((bool)more.IsChecked)
+                        if ((bool)bubble.IsChecked)
                         {
-                            SortIntArray(0, 0);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortIntArray(0, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortIntArray(0, 1);
+                            }
                         }
-                        else if ((bool)less.IsChecked)
+                        else if ((bool)insertion.IsChecked)
                         {
-                            SortIntArray(0, 1);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortIntArray(1, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortIntArray(1, 1);
+                            }
+                        }
+                        else if ((bool)heap.IsChecked)
+                        {
+                            if ((bool)more.IsChecked)
+                            {
+                                SortIntArray(2, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortIntArray(2, 1);
+                            }
+                        }
+                        else if ((bool)quick.IsChecked)
+                        {
+                            if ((bool)more.IsChecked)
+                            {
+                                SortIntArray(3, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortIntArray(3, 1);
+                            }
                         }
                     }
-                    else if ((bool)insertion.IsChecked)
+                    if ((bool)floatBut.IsChecked)
                     {
-                        if ((bool)more.IsChecked)
+                        if ((bool)bubble.IsChecked)
                         {
-                            SortIntArray(1, 0);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortFloatArray(0, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortFloatArray(0, 1);
+                            }
                         }
-                        else if ((bool)less.IsChecked)
+                        else if ((bool)insertion.IsChecked)
                         {
-                            SortIntArray(1, 1);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortFloatArray(1, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortFloatArray(1, 1);
+                            }
                         }
-                    }
-                    else if ((bool)heap.IsChecked)
-                    {
-                        if ((bool)more.IsChecked)
+                        else if ((bool)heap.IsChecked)
                         {
-                            SortIntArray(2, 0);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortFloatArray(2, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortFloatArray(2, 1);
+                            }
                         }
-                        else if ((bool)less.IsChecked)
+                        else if ((bool)quick.IsChecked)
                         {
-                            SortIntArray(2, 1);
-                        }
-                    }
-                    else if ((bool)quick.IsChecked)
-                    {
-                        if ((bool)more.IsChecked)
-                        {
-                            SortIntArray(3, 0);
-                        }
-                        else if ((bool)less.IsChecked)
-                        {
-                            SortIntArray(3, 1);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortFloatArray(3, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortFloatArray(3, 1);
+                            }
                         }
                     }
                 }
-                if ((bool)floatBut.IsChecked)
+                if ((bool)listBut.IsChecked)
                 {
-                    if ((bool)bubble.IsChecked)
+                    if ((bool)intBut.IsChecked)
                     {
-                        if ((bool)more.IsChecked)
+                        if ((bool)bubble.IsChecked)
                         {
-                            SortFloatArray(0, 0);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortIntList(0, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortIntList(0, 1);
+                            }
                         }
-                        else if ((bool)less.IsChecked)
+                        else if ((bool)insertion.IsChecked)
                         {
-                            SortFloatArray(0, 1);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortIntList(1, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortIntList(1, 1);
+                            }
+                        }
+                        else if ((bool)heap.IsChecked)
+                        {
+                            if ((bool)more.IsChecked)
+                            {
+                                SortIntList(2, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortIntList(2, 1);
+                            }
+                        }
+                        else if ((bool)quick.IsChecked)
+                        {
+                            if ((bool)more.IsChecked)
+                            {
+                                SortIntList(3, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortIntList(3, 1);
+                            }
                         }
                     }
-                    else if ((bool)insertion.IsChecked)
+                    if ((bool)floatBut.IsChecked)
                     {
-                        if ((bool)more.IsChecked)
+                        if ((bool)bubble.IsChecked)
                         {
-                            SortFloatArray(1, 0);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortFloatList(0, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortFloatList(0, 1);
+                            }
                         }
-                        else if ((bool)less.IsChecked)
+                        else if ((bool)insertion.IsChecked)
                         {
-                            SortFloatArray(1, 1);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortFloatList(1, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortFloatList(1, 1);
+                            }
                         }
-                    }
-                    else if ((bool)heap.IsChecked)
-                    {
-                        if ((bool)more.IsChecked)
+                        else if ((bool)heap.IsChecked)
                         {
-                            SortFloatArray(2, 0);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortFloatList(2, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortFloatList(2, 1);
+                            }
                         }
-                        else if ((bool)less.IsChecked)
+                        else if ((bool)quick.IsChecked)
                         {
-                            SortFloatArray(2, 1);
-                        }
-                    }
-                    else if ((bool)quick.IsChecked)
-                    {
-                        if ((bool)more.IsChecked)
-                        {
-                            SortFloatArray(3, 0);
-                        }
-                        else if ((bool)less.IsChecked)
-                        {
-                            SortFloatArray(3, 1);
+                            if ((bool)more.IsChecked)
+                            {
+                                SortFloatList(3, 0);
+                            }
+                            else if ((bool)less.IsChecked)
+                            {
+                                SortFloatList(3, 1);
+                            }
                         }
                     }
                 }
             }
-            if ((bool)listBut.IsChecked)
+        }
+
+        List<int> timeAxis0 = new List<int>();
+
+        private void BubbleSortThread()
+        {
+            Dispatcher.Invoke(() =>
             {
-                if ((bool)intBut.IsChecked)
+                //if(timeChart != null && line0 != null) line0.Values = new ChartValues<int>();
+                line0.Values = new ChartValues<int>();
+            });
+            timeAxis0 = new List<int>();
+            StringBuilder sb = new StringBuilder(1000);
+            for (int i = 1; i < 1000; i++)
+            {
+                RandomIntArray(i, sb);
+
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
+                SortIntArray(0, 0);
+                watch.Stop();
+                // timeAxis0.Add(i);
+                // timeAxis0.Add((int)watch.ElapsedMilliseconds);
+                Dispatcher.Invoke(() =>
                 {
-                    if ((bool)bubble.IsChecked)
+                    // if (timeChart != null && line0 != null && line0.Values != null && watch != null) line0.Values.Add((int)watch.ElapsedMilliseconds);
+                    line0.Values.Add((int)watch.ElapsedMilliseconds);
+                });
+            }
+            //Thread.Sleep(5000);
+            //Dispatcher.Invoke(() =>
+            //{
+            //    timeChart.Series[0].Values = new ChartValues<int>(timeAxis0);
+            //});
+            timeChart.Update();
+            canAccess = true;
+            int a = 0;
+        }
+
+        private void BuildGraph_Click(object sender, RoutedEventArgs e)
+        {
+            if (canAccess)
+            {
+                canAccess = false;
+                if ((bool)arrBut.IsChecked)
+                {
+                    if ((bool)intBut.IsChecked)
                     {
-                        if ((bool)more.IsChecked)
-                        {
-                            SortIntList(0, 0);
-                        }
-                        else if ((bool)less.IsChecked)
-                        {
-                            SortIntList(0, 1);
-                        }
+                        //List<int> timeAxis1 = new List<int>();
+                        //List<int> timeAxis2 = new List<int>();
+                        //List<int> timeAxis3 = new List<int>();
+
+                        bubbleThread.Start();
+
                     }
-                    else if ((bool)insertion.IsChecked)
+                    if ((bool)floatBut.IsChecked)
                     {
-                        if ((bool)more.IsChecked)
-                        {
-                            SortIntList(1, 0);
-                        }
-                        else if ((bool)less.IsChecked)
-                        {
-                            SortIntList(1, 1);
-                        }
-                    }
-                    else if ((bool)heap.IsChecked)
-                    {
-                        if ((bool)more.IsChecked)
-                        {
-                            SortIntList(2, 0);
-                        }
-                        else if ((bool)less.IsChecked)
-                        {
-                            SortIntList(2, 1);
-                        }
-                    }
-                    else if ((bool)quick.IsChecked)
-                    {
-                        if ((bool)more.IsChecked)
-                        {
-                            SortIntList(3, 0);
-                        }
-                        else if ((bool)less.IsChecked)
-                        {
-                            SortIntList(3, 1);
-                        }
+
                     }
                 }
-                if ((bool)floatBut.IsChecked)
+                if ((bool)listBut.IsChecked)
                 {
-                    if ((bool)bubble.IsChecked)
+                    if ((bool)intBut.IsChecked)
                     {
-                        if ((bool)more.IsChecked)
-                        {
-                            SortFloatList(0, 0);
-                        }
-                        else if ((bool)less.IsChecked)
-                        {
-                            SortFloatList(0, 1);
-                        }
+
                     }
-                    else if ((bool)insertion.IsChecked)
+                    if ((bool)floatBut.IsChecked)
                     {
-                        if ((bool)more.IsChecked)
-                        {
-                            SortFloatList(1, 0);
-                        }
-                        else if ((bool)less.IsChecked)
-                        {
-                            SortFloatList(1, 1);
-                        }
-                    }
-                    else if ((bool)heap.IsChecked)
-                    {
-                        if ((bool)more.IsChecked)
-                        {
-                            SortFloatList(2, 0);
-                        }
-                        else if ((bool)less.IsChecked)
-                        {
-                            SortFloatList(2, 1);
-                        }
-                    }
-                    else if ((bool)quick.IsChecked)
-                    {
-                        if ((bool)more.IsChecked)
-                        {
-                            SortFloatList(3, 0);
-                        }
-                        else if ((bool)less.IsChecked)
-                        {
-                            SortFloatList(3, 1);
-                        }
+
                     }
                 }
             }
