@@ -76,11 +76,18 @@ namespace GUI
             InitFloatList();
 
             randomColSize = 0;
-
-            // timeChart.AxisX = new AxesCollection();
-            // timeChart.AxisY = new AxesCollection();
             canAccess = true;
             bubbleThread = new Thread(BubbleSortThread);
+            
+            System.Timers.Timer timer = new System.Timers.Timer(50);
+            timer.Elapsed += OnTimedEvent;
+            timer.Interval = 50;
+            timer.Start();
+        }
+
+        private void OnTimedEvent(object obj, EventArgs args)
+        {
+            line0.Values = new ChartValues<int>(timeAxis0);
         }
 
         private bool canAccess;
@@ -485,11 +492,6 @@ namespace GUI
 
         private void BubbleSortThread()
         {
-            Dispatcher.Invoke(() =>
-            {
-                //if(timeChart != null && line0 != null) line0.Values = new ChartValues<int>();
-                line0.Values = new ChartValues<int>();
-            });
             timeAxis0 = new List<int>();
             StringBuilder sb = new StringBuilder(1000);
             for (int i = 1; i < 1000; i++)
@@ -500,22 +502,10 @@ namespace GUI
                 watch.Start();
                 SortIntArray(0, 0);
                 watch.Stop();
-                // timeAxis0.Add(i);
-                // timeAxis0.Add((int)watch.ElapsedMilliseconds);
-                Dispatcher.Invoke(() =>
-                {
-                    // if (timeChart != null && line0 != null && line0.Values != null && watch != null) line0.Values.Add((int)watch.ElapsedMilliseconds);
-                    line0.Values.Add((int)watch.ElapsedMilliseconds);
-                });
+                timeAxis0.Add((int)watch.ElapsedMilliseconds);
             }
-            //Thread.Sleep(5000);
-            //Dispatcher.Invoke(() =>
-            //{
-            //    timeChart.Series[0].Values = new ChartValues<int>(timeAxis0);
-            //});
-            timeChart.Update();
             canAccess = true;
-            int a = 0;
+            bubbleThread.Abort();
         }
 
         private void BuildGraph_Click(object sender, RoutedEventArgs e)
@@ -531,7 +521,7 @@ namespace GUI
                         //List<int> timeAxis2 = new List<int>();
                         //List<int> timeAxis3 = new List<int>();
 
-                        bubbleThread.Start();
+                        if(!bubbleThread.IsAlive) bubbleThread.Start();
 
                     }
                     if ((bool)floatBut.IsChecked)

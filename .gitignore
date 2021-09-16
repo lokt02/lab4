@@ -34,3 +34,13 @@
 *.lock
 GUI/.vs/
 GUI/GUI/obj/
+
+GUI/GUI/.vs
+
+GUI/.idea/.idea.GUI/.idea/
+
+*.ide
+
+*.ide-shm
+
+GUI/GUI/bin/Debug/GUI.pdb
