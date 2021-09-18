@@ -48,7 +48,8 @@
                 <lvc:CartesianChart.Series>
                     <lvc:LineSeries x:Name="line0" Values="{Binding Values}" LineSmoothness="1" StrokeThickness="1" 
                                 FontSize="20" Foreground="#6B00F0F0"
-                                Stroke="Cyan" Fill="Transparent" PointGeometrySize="0"/>
+                                Stroke="Cyan" Fill="Transparent" PointGeometrySize="0"
+                                d:DataContext="{d:DesignInstance }" />
                     <lvc:LineSeries Fill="Transparent" Stroke="#FF61B472" PointGeometrySize="0" StrokeThickness="1" />
                     <lvc:LineSeries Fill="Transparent" Stroke="#FFAF3E71" PointGeometrySize="0" StrokeThickness="1" />
                     <lvc:LineSeries Fill="Transparent" Stroke="#FFD3C843" PointGeometrySize="0" StrokeThickness="1" />

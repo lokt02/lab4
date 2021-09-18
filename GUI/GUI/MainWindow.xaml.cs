@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -66,7 +67,7 @@ namespace GUI
         public static extern void DisplayArray(int arr_number, StringBuilder output);
 
         Thread bubbleThread;
-
+        private System.Timers.Timer timer;
         public MainWindow()
         {
             InitializeComponent();
@@ -78,16 +79,25 @@ namespace GUI
             randomColSize = 0;
             canAccess = true;
             bubbleThread = new Thread(BubbleSortThread);
+
+            timeAxis0 = new BlockingCollection<int>();
+            last0 = 0;
+            line0.Values = new ChartValues<int>();
             
-            System.Timers.Timer timer = new System.Timers.Timer(50);
+            timer = new System.Timers.Timer(50);
             timer.Elapsed += OnTimedEvent;
             timer.Interval = 50;
             timer.Start();
         }
 
+        private int last0;
+
         private void OnTimedEvent(object obj, EventArgs args)
         {
-            line0.Values = new ChartValues<int>(timeAxis0);
+            if (!line0.Values.Contains(last0))
+            {
+                line0.Values.Add(last0);
+            }
         }
 
         private bool canAccess;
@@ -488,11 +498,10 @@ namespace GUI
             }
         }
 
-        List<int> timeAxis0 = new List<int>();
+        BlockingCollection<int> timeAxis0 = new BlockingCollection<int>();
 
         private void BubbleSortThread()
         {
-            timeAxis0 = new List<int>();
             StringBuilder sb = new StringBuilder(1000);
             for (int i = 1; i < 1000; i++)
             {
@@ -502,6 +511,7 @@ namespace GUI
                 watch.Start();
                 SortIntArray(0, 0);
                 watch.Stop();
+                last0 = (int) watch.ElapsedMilliseconds;
                 timeAxis0.Add((int)watch.ElapsedMilliseconds);
             }
             canAccess = true;
@@ -512,6 +522,7 @@ namespace GUI
         {
             if (canAccess)
             {
+                timeAxis0 = new BlockingCollection<int>();
                 canAccess = false;
                 if ((bool)arrBut.IsChecked)
                 {
@@ -522,7 +533,7 @@ namespace GUI
                         //List<int> timeAxis3 = new List<int>();
 
                         if(!bubbleThread.IsAlive) bubbleThread.Start();
-
+                        //timer.Start();
                     }
                     if ((bool)floatBut.IsChecked)
                     {
