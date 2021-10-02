@@ -79,10 +79,26 @@ namespace GUI
             randomColSize = 0;
             canAccess = true;
             bubbleThread = new Thread(BubbleSortThread);
-
-            timeAxis0 = new BlockingCollection<int>();
+            insertionThread = new Thread(InsertionSortThread);
+            heapThread = new Thread(HeapSortThread);
+            quickThread = new Thread(QuickSortThread);
+            timeAxis0 = new BlockingCollection<double>();
+            timeAxis1 = new BlockingCollection<double>();
+            timeAxis2 = new BlockingCollection<double>();
+            timeAxis3 = new BlockingCollection<double>();
+            timeAxis0.Add(0);
+            timeAxis1.Add(0);
+            timeAxis2.Add(0);
+            timeAxis3.Add(0);
+            
             last0 = 0;
-            line0.Values = new ChartValues<int>();
+            last1 = 0;
+            last2 = 0;
+            last3 = 0;
+            line0.Values = new ChartValues<double>();
+            line1.Values = new ChartValues<double>();
+            line2.Values = new ChartValues<double>();
+            line3.Values = new ChartValues<double>();
             
             timer = new System.Timers.Timer(50);
             timer.Elapsed += OnTimedEvent;
@@ -90,13 +106,45 @@ namespace GUI
             timer.Start();
         }
 
+        private BlockingCollection<double> timeAxis0;
+        private BlockingCollection<double> timeAxis1;
+        private BlockingCollection<double> timeAxis2;
+        private BlockingCollection<double> timeAxis3;
+
         private int last0;
+        private int last1;
+        private int last2;
+        private int last3;
 
         private void OnTimedEvent(object obj, EventArgs args)
         {
-            if (!line0.Values.Contains(last0))
+            if (line0.Values.Count < timeAxis0.Count)
             {
-                line0.Values.Add(last0);
+                for (int i = line0.Values.Count; i < timeAxis0.Count; i++)
+                {
+                    line0.Values.Add(timeAxis0.ToArray()[i]);
+                }
+            }
+            if (line1.Values.Count < timeAxis1.Count)
+            {
+                for (int i = line1.Values.Count; i < timeAxis1.Count; i++)
+                {
+                    line1.Values.Add(timeAxis1.ToArray()[i]);
+                }
+            }
+            if (line2.Values.Count < timeAxis2.Count)
+            {
+                for (int i = line2.Values.Count; i < timeAxis2.Count; i++)
+                {
+                    line2.Values.Add(timeAxis2.ToArray()[i]);
+                }
+            }
+            if (line3.Values.Count < timeAxis3.Count)
+            {
+                for (int i = line3.Values.Count; i < timeAxis3.Count; i++)
+                {
+                    line3.Values.Add(timeAxis3.ToArray()[i]);
+                }
             }
         }
 
@@ -498,11 +546,10 @@ namespace GUI
             }
         }
 
-        BlockingCollection<int> timeAxis0 = new BlockingCollection<int>();
-
+        Thread insertionThread;
         private void BubbleSortThread()
         {
-            StringBuilder sb = new StringBuilder(1000);
+            StringBuilder sb = new StringBuilder(10000);
             for (int i = 1; i < 1000; i++)
             {
                 RandomIntArray(i, sb);
@@ -511,18 +558,73 @@ namespace GUI
                 watch.Start();
                 SortIntArray(0, 0);
                 watch.Stop();
-                last0 = (int) watch.ElapsedMilliseconds;
-                timeAxis0.Add((int)watch.ElapsedMilliseconds);
+                // last0 = (int) watch.ElapsedMilliseconds;
+                timeAxis0.Add(watch.ElapsedMilliseconds);
+            }
+            insertionThread.Start();
+            // bubbleThread.Abort();
+        }
+
+        private Thread heapThread;
+        private void InsertionSortThread()
+        {
+            StringBuilder sb = new StringBuilder(10000);
+            for (int i = 1; i < 1000; i++)
+            {
+                RandomIntArray(i, sb);
+
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
+                SortIntArray(1, 0);
+                watch.Stop();
+                last1 = (int) watch.ElapsedMilliseconds;
+                timeAxis1.Add(watch.ElapsedMilliseconds);
+            }
+
+            heapThread.Start();
+            // bubbleThread.Abort();
+        }
+
+        private Thread quickThread;
+        private void HeapSortThread()
+        {
+            StringBuilder sb = new StringBuilder(10000);
+            for (int i = 1; i < 1000; i++)
+            {
+                RandomIntArray(i, sb);
+
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
+                SortIntArray(2, 0);
+                watch.Stop();
+                last2 = (int) watch.ElapsedMilliseconds;
+                timeAxis2.Add(watch.ElapsedMilliseconds);
+            }
+            quickThread.Start();
+            // bubbleThread.Abort();
+        }
+        private void QuickSortThread()
+        {
+            StringBuilder sb = new StringBuilder(10000);
+            for (int i = 1; i < 1000; i++)
+            {
+                RandomIntArray(i, sb);
+
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
+                SortIntArray(3, 0);
+                watch.Stop();
+                last3 = (int) watch.ElapsedMilliseconds;
+                timeAxis3.Add(watch.ElapsedMilliseconds);
             }
             canAccess = true;
-            bubbleThread.Abort();
+            // bubbleThread.Abort();
         }
 
         private void BuildGraph_Click(object sender, RoutedEventArgs e)
         {
             if (canAccess)
             {
-                timeAxis0 = new BlockingCollection<int>();
                 canAccess = false;
                 if ((bool)arrBut.IsChecked)
                 {

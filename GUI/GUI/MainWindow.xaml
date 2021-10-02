@@ -50,9 +50,12 @@
                                 FontSize="20" Foreground="#6B00F0F0"
                                 Stroke="Cyan" Fill="Transparent" PointGeometrySize="0"
                                 d:DataContext="{d:DesignInstance }" />
-                    <lvc:LineSeries Fill="Transparent" Stroke="#FF61B472" PointGeometrySize="0" StrokeThickness="1" />
-                    <lvc:LineSeries Fill="Transparent" Stroke="#FFAF3E71" PointGeometrySize="0" StrokeThickness="1" />
-                    <lvc:LineSeries Fill="Transparent" Stroke="#FFD3C843" PointGeometrySize="0" StrokeThickness="1" />
+                    <lvc:LineSeries x:Name="line1" Values="{Binding Values}" LineSmoothness="1"
+                                    Fill="Transparent" Stroke="#FF61B472" PointGeometrySize="0" StrokeThickness="1" />
+                    <lvc:LineSeries x:Name="line2" Values="{Binding Values}" LineSmoothness="1"
+                                    Fill="Transparent" Stroke="#FFAF3E71" PointGeometrySize="0" StrokeThickness="1" />
+                    <lvc:LineSeries x:Name="line3" Values="{Binding Values}" LineSmoothness="1"
+                                    Fill="Transparent" Stroke="#FFD3C843" PointGeometrySize="0" StrokeThickness="1" />
                 </lvc:CartesianChart.Series>
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis ShowLabels="True" MinValue="0" Title="item count">
