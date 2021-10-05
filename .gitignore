@@ -42,3 +42,6 @@ GUI/GUI/bin/Debug/
 GUI/GUI/.vs
 *.ide
 *.ide-shm
+cmake-build-debug/Tests/
+
+*.log
