@@ -34,3 +34,7 @@
 *.lock
 GUI/.vs/
 GUI/GUI/obj/
+
+GUI/.idea/.idea.GUI/.idea/
+
+GUI/GUI/bin/Debug/

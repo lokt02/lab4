@@ -66,6 +66,9 @@ namespace GUI
         public static extern void DisplayArray(int arr_number, StringBuilder output);
 
         Thread bubbleThread;
+        Thread insertionThread;
+        // Thread heapThread;
+        Thread quickThread;
 
         public MainWindow()
         {
@@ -76,11 +79,11 @@ namespace GUI
             InitFloatList();
 
             randomColSize = 0;
-
-            // timeChart.AxisX = new AxesCollection();
-            // timeChart.AxisY = new AxesCollection();
             canAccess = true;
             bubbleThread = new Thread(BubbleSortThread);
+            insertionThread = new Thread(InsertionSortThread);
+            // heapThread = new Thread(HeapSortThread);
+            quickThread = new Thread(QuickSortThread);
         }
 
         private bool canAccess;
@@ -310,7 +313,7 @@ namespace GUI
                                 SortIntArray(1, 1);
                             }
                         }
-                        else if ((bool)heap.IsChecked)
+                        else if (/*(bool)heap.IsChecked*/ false)
                         {
                             if ((bool)more.IsChecked)
                             {
@@ -357,7 +360,7 @@ namespace GUI
                                 SortFloatArray(1, 1);
                             }
                         }
-                        else if ((bool)heap.IsChecked)
+                        else if (/*(bool)heap.IsChecked*/ false)
                         {
                             if ((bool)more.IsChecked)
                             {
@@ -407,7 +410,7 @@ namespace GUI
                                 SortIntList(1, 1);
                             }
                         }
-                        else if ((bool)heap.IsChecked)
+                        else if (/*(bool)heap.IsChecked*/ false)
                         {
                             if ((bool)more.IsChecked)
                             {
@@ -454,7 +457,7 @@ namespace GUI
                                 SortFloatList(1, 1);
                             }
                         }
-                        else if ((bool)heap.IsChecked)
+                        else if (/*(bool)heap.IsChecked*/ false)
                         {
                             if ((bool)more.IsChecked)
                             {
@@ -481,18 +484,16 @@ namespace GUI
             }
         }
 
-        List<int> timeAxis0 = new List<int>();
-
         private void BubbleSortThread()
         {
             Dispatcher.Invoke(() =>
             {
-                //if(timeChart != null && line0 != null) line0.Values = new ChartValues<int>();
                 line0.Values = new ChartValues<int>();
             });
-            timeAxis0 = new List<int>();
             StringBuilder sb = new StringBuilder(1000);
-            for (int i = 1; i < 1000; i++)
+            int i = 400;
+            int delta = 1;
+            while (i < 1500)
             {
                 RandomIntArray(i, sb);
 
@@ -500,22 +501,110 @@ namespace GUI
                 watch.Start();
                 SortIntArray(0, 0);
                 watch.Stop();
-                // timeAxis0.Add(i);
-                // timeAxis0.Add((int)watch.ElapsedMilliseconds);
                 Dispatcher.Invoke(() =>
                 {
-                    // if (timeChart != null && line0 != null && line0.Values != null && watch != null) line0.Values.Add((int)watch.ElapsedMilliseconds);
                     line0.Values.Add((int)watch.ElapsedMilliseconds);
                 });
+                i += delta;
+                if (i % 50 == 0)
+                {
+                    delta += 5;
+                }
             }
-            //Thread.Sleep(5000);
-            //Dispatcher.Invoke(() =>
-            //{
-            //    timeChart.Series[0].Values = new ChartValues<int>(timeAxis0);
-            //});
+            insertionThread.Start();
+            timeChart.Update();
+        }
+        private void InsertionSortThread()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                line1.Values = new ChartValues<int>();
+            });
+            StringBuilder sb = new StringBuilder(1000);
+            int i = 400;
+            int delta = 1;
+            while (i < 1500)
+            {
+                RandomIntArray(i, sb);
+
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
+                SortIntArray(1, 0);
+                watch.Stop();
+                Dispatcher.Invoke(() =>
+                {
+                    line1.Values.Add((int)watch.ElapsedMilliseconds);
+                });
+                i += delta;
+                if (i % 50 == 0)
+                {
+                    delta += 5;
+                }
+            }
+            // heapThread.Start();
+            quickThread.Start();
+            timeChart.Update();
+        }
+        private void HeapSortThread()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                line2.Values = new ChartValues<int>();
+            });
+            StringBuilder sb = new StringBuilder(1000);
+            int i = 400;
+            int delta = 1;
+            while (i < 1500)
+            {
+                RandomIntArray(i, sb);
+
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
+                SortIntArray(2, 0);
+                watch.Stop();
+                Dispatcher.Invoke(() =>
+                {
+                    line2.Values.Add((int)watch.ElapsedMilliseconds);
+                });
+                i += delta;
+                if (i % 50 == 0)
+                {
+                    delta += 5;
+                }
+            }
+            quickThread.Start();
             timeChart.Update();
             canAccess = true;
-            int a = 0;
+        }
+        private void QuickSortThread()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                line3.Values = new ChartValues<int>();
+            });
+            StringBuilder sb = new StringBuilder(1000);
+            int i = 400;
+            int delta = 1;
+            while (i < 1500)
+            {
+                RandomIntArray(i, sb);
+
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
+                SortIntArray(3, 0);
+                watch.Stop();
+                Dispatcher.Invoke(() =>
+                {
+                    line3.Values.Add((int)watch.ElapsedMilliseconds);
+                });
+                i += delta;
+                if (i % 50 == 0)
+                {
+                    delta += 5;
+                }
+            }
+            timeChart.Update();
+            canAccess = true;
         }
 
         private void BuildGraph_Click(object sender, RoutedEventArgs e)
@@ -523,33 +612,7 @@ namespace GUI
             if (canAccess)
             {
                 canAccess = false;
-                if ((bool)arrBut.IsChecked)
-                {
-                    if ((bool)intBut.IsChecked)
-                    {
-                        //List<int> timeAxis1 = new List<int>();
-                        //List<int> timeAxis2 = new List<int>();
-                        //List<int> timeAxis3 = new List<int>();
-
-                        bubbleThread.Start();
-
-                    }
-                    if ((bool)floatBut.IsChecked)
-                    {
-
-                    }
-                }
-                if ((bool)listBut.IsChecked)
-                {
-                    if ((bool)intBut.IsChecked)
-                    {
-
-                    }
-                    if ((bool)floatBut.IsChecked)
-                    {
-
-                    }
-                }
+                bubbleThread.Start();
             }
         }
     }

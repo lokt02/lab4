@@ -36,7 +36,7 @@
         <ListBox HorizontalAlignment="Left" Height="93" VerticalAlignment="Top" Width="112" Margin="595,227,0,0" Grid.RowSpan="2">
             <RadioButton x:Name="bubble" Content="Bubble Sort" IsChecked="True"/>
             <RadioButton x:Name="insertion" Content="Insertion Sort"/>
-            <RadioButton x:Name="heap" Content="Heap Sort"/>
+            <!--<RadioButton x:Name="heap" Content="Heap Sort"/>-->
             <RadioButton x:Name="quick" Content="Quick Sort"/>
         </ListBox>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Items in random collection:" VerticalAlignment="Top" Margin="543,45.4,0,0" Grid.Row="1"/>
@@ -49,19 +49,22 @@
                     <lvc:LineSeries x:Name="line0" Values="{Binding Values}" LineSmoothness="1" StrokeThickness="1" 
                                 FontSize="20" Foreground="#6B00F0F0"
                                 Stroke="Cyan" Fill="Transparent" PointGeometrySize="0"/>
-                    <lvc:LineSeries Fill="Transparent" Stroke="#FF61B472" PointGeometrySize="0" StrokeThickness="1" />
-                    <lvc:LineSeries Fill="Transparent" Stroke="#FFAF3E71" PointGeometrySize="0" StrokeThickness="1" />
-                    <lvc:LineSeries Fill="Transparent" Stroke="#FFD3C843" PointGeometrySize="0" StrokeThickness="1" />
+                    <lvc:LineSeries x:Name="line1" Values="{Binding Values}"
+                                    Fill="Transparent" Stroke="#FF61B472" PointGeometrySize="0" StrokeThickness="1" />
+                    <lvc:LineSeries x:Name="line2" Values="{Binding Values}"
+                                    Fill="Transparent" Stroke="#FFAF3E71" PointGeometrySize="0" StrokeThickness="1" />
+                    <lvc:LineSeries x:Name="line3" Values="{Binding Values}"
+                                    Fill="Transparent" Stroke="#FFD3C843" PointGeometrySize="0" StrokeThickness="1" />
                 </lvc:CartesianChart.Series>
                 <lvc:CartesianChart.AxisX>
-                    <lvc:Axis ShowLabels="True" MinValue="0" Title="item count">
+                    <lvc:Axis ShowLabels="True" Title="item count">
                         <lvc:Axis.Separator>
                             <lvc:Separator StrokeThickness="1" Stroke="#8EB9B9B9" StrokeDashArray="8" Step="100" />
                         </lvc:Axis.Separator>
                     </lvc:Axis>
                 </lvc:CartesianChart.AxisX>
                 <lvc:CartesianChart.AxisY>
-                    <lvc:Axis ShowLabels="True" MinValue="0" Title="time">
+                    <lvc:Axis ShowLabels="True" MinValue="0" MaxValue="150" Title="time">
                         <lvc:Axis.Separator>
                             <lvc:Separator StrokeThickness="1" Stroke="#8EB9B9B9" StrokeDashArray="8" Step="100" />
                         </lvc:Axis.Separator>
